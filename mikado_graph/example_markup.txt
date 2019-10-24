@@ -1,0 +1,19 @@
+_ Final Goal: Things are connected
+    _ connect thing1 and thing2
+        _ Get thing1 from supplier
+            x coordinate with Adam
+            _ get thing from Barb
+            x onboard Carol
+        _ Put thing2 in the other thing
+            _ network connectivity
+            x coordinate with David
+            x get thing from Ed
+            x onboard Carol
+    # Ignore this line
+    _ thing3 and thing4 are load-balanced
+        _ set up load balancer
+            x make thing3
+            x make thing4
+            _ network connectivity
+        _ I'm a URL\nhttps\:\/\/www.google.com
+        x Check C
