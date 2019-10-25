@@ -37,6 +37,8 @@ def parse_mikado_description(description_file):
         text = file.read()
         lines = text.split('\n')
 
+        # lines = list(map(lambda line: line.replace('://', '\:\/\/'), lines))
+        # lines = list(map(lambda line: line.replace('Carol', 'Janet'), lines))
         lines = list(filter(lambda line: all(symbol not in line.lstrip() for symbol in COMMENT_SYMBOLS), lines))
         lines = list(map(cleanup_test_to_comply_with_dot, lines))
         lines = list(map(lambda line: line.replace('\t', ' ' * 4), lines))
@@ -87,11 +89,23 @@ def draw_mikado_graph(nodes, edges, format):
     return graph
 
 def _append_node(graph, node):
-    color = 'dodgerblue1' if node.dev else 'darkgreen' if node.done else 'firebrick'
+    if node.dev:
+        color = 'blue'
+    elif node.done:
+        color = 'darkgreen'
+    else:
+        color = "firebrick"
+    # color = 'blue' if node.dev else 'darkgreen' if node.done else 'firebrick'
     graph.node(node.name, color=color, fontcolor=color, peripheries='2' if node.goal else '1')
 
 def _append_edge(graph, edge):
-    color = 'dodgerblue1' if edge.dev else 'darkgreen' if edge.done else 'firebrick'
+    if edge.dev:
+        color = 'dodgerblue1'
+    elif edge.done:
+        color = 'darkgreen'
+    else:
+        color = "firebrick"
+    # color = 'dodgerblue1' if edge.dev else 'darkgreen' if edge.done else 'firebrick'
     graph.edge(edge.src, edge.dst, color=color)
 
 def render_graph(mikado_description, view, output_file, format):
